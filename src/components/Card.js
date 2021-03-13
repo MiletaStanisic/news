@@ -22,7 +22,7 @@ function Card({ article }) {
           </div>
           <div className="card-body">
             <div className="card-text d-flex justify-content-between align-items-center">
-              <p className="card-text"><small className="text-muted">Published: {humanizeDate(article.publishedAt)}</small></p>
+              <p className="card-text mb-0"><small className="text-muted">Published: {humanizeDate(article.publishedAt)}</small></p>
               <LinkButton
                 onClick={() => dispatch(loadArticle(article))}
                 to={`article/${encodeURIComponent(article.title)}`}
