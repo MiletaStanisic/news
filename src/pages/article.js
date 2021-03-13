@@ -20,9 +20,9 @@ function Article() {
       <section className="row title">
         <div className="col-12">
           <h1>{article.title}</h1>
-          <div className="d-flex align-items-center justify-content-between mt-3">
-            <span className="text-muted">Source: {article?.source?.name ?? ''}</span>
-            <span className="text-muted">Author: {article.author}</span>
+          <div className="d-block d-md-flex align-items-center justify-content-between mt-3">
+            <span className="text-muted d-block d-md-inline">Source: {article?.source?.name ?? ''}</span>
+            <span className="text-muted d-block d-md-inline">Author: {article.author}</span>
           </div>
           <span className="text-muted d-block">Published: {humanizeDate(article.publishedAt)}</span>
         </div>
