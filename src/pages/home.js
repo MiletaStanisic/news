@@ -86,7 +86,7 @@ function Home() {
         <div className="col-12">
           <h1>Top Headlines</h1>
         </div>
-        {allNews.map((article, index) => (
+        {allNews && allNews.map((article, index) => (
           <div key={index} className="col-12 col-md-6 col-lg-4">
             <Card article={article} />
           </div>

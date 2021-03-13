@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Example should render component 1`] = `ShallowWrapper {}`;
+
+exports[`Home should render cards 1`] = `ShallowWrapper {}`;
+
+exports[`Home should render component 1`] = `ShallowWrapper {}`;
