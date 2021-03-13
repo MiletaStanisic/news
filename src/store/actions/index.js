@@ -24,17 +24,20 @@ export const setAllNewsSuccess = response => {
 
 
 export const loadNews = params => async (dispatch, getState) => {
-  dispatch(loadNewsStart())
+  const loading = params?.loading ?? true;
+  params && params.loading && delete params.loading;
+
+  dispatch(loadNewsStart(loading))
   const promise = await API.get('top-headlines?country=us', params)
     .then(response => dispatch(loadNewsSuccess(response)))
     .catch(error => dispatch(loadNewsFailed(error)))
   return promise;
 }
 
-export const loadNewsStart = () => {
+export const loadNewsStart = loading => {
   return {
     type: AT.LOAD_NEWS_START,
-    loading: true
+    loading: loading
   }
 }
 

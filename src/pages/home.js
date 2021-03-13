@@ -19,10 +19,11 @@ function Home() {
       .then(response => loadPage(page, response.allNews))
   }, [])
 
-  const loadPage = (nextPage, initState) => {
+  const loadPage = (nextPage, initState, loading) => {
     const params = {
       pageSize: pageSize,
-      page: nextPage
+      page: nextPage,
+      loading: loading
     }
     dispatch(loadNews(params))
       .then(response => {
@@ -58,7 +59,7 @@ function Home() {
       </section>}
       <section className="row load-more">
         {showLoadMore(page) && <div className="col-12 text-center">
-          <button onClick={() => loadPage(page + 1, allNews)} className="btn btn-lg btn-primary">Load more</button>
+          <button onClick={() => loadPage(page + 1, allNews, false)} className="btn btn-lg btn-primary">Load more</button>
         </div>}
       </section>
     </div>
