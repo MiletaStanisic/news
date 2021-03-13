@@ -3,7 +3,8 @@ import API from '../../api';
 
 export const setAllNews = payload => async (dispatch, getState) => {
   dispatch(setAllNewsStart())
-  dispatch(setAllNewsSuccess(payload))
+  const promise = await dispatch(setAllNewsSuccess(payload))
+  return promise;
 }
 
 export const setAllNewsStart = () => {
@@ -24,9 +25,10 @@ export const setAllNewsSuccess = response => {
 
 export const loadNews = params => async (dispatch, getState) => {
   dispatch(loadNewsStart())
-  API.get('top-headlines?country=us', params)
+  const promise = await API.get('top-headlines?country=us', params)
     .then(response => dispatch(loadNewsSuccess(response)))
     .catch(error => dispatch(loadNewsFailed(error)))
+  return promise;
 }
 
 export const loadNewsStart = () => {
@@ -53,7 +55,7 @@ export const loadNewsSuccess = response => {
   }
 }
 
-export const searchNews = params => async (dispatch, getState) => {
+export const searchNews = params => (dispatch, getState) => {
   dispatch(searchNewsStart())
   API.get('top-headlines?country=us', params)
     .then(response => dispatch(searchNewsSuccess(response)))
@@ -83,7 +85,7 @@ export const searchNewsSuccess = response => {
   }
 }
 
-export const loadArticle = payload => async (dispatch, getState) => {
+export const loadArticle = payload => (dispatch, getState) => {
   dispatch(loadArticleStart())
   dispatch(loadArticleSuccess(payload))
 }

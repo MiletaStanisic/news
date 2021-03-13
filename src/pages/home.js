@@ -6,7 +6,6 @@ import { debounce } from '../utils/debounce';
 
 function Home() {
   const pageSize = 20;
-  const news = useSelector(state => state.reducer.news);
   const allNews = useSelector(state => state.reducer.allNews);
   const filteredNews = useSelector(state => state.reducer.filteredNews);
   const totalResults = useSelector(state => state.reducer.totalResults);
@@ -17,16 +16,9 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const params = {
-      pageSize: pageSize,
-      page: page
-    }
-    dispatch(loadNews(params));
+    dispatch(setAllNews([]))
+      .then(response => loadPage(page, response.allNews))
   }, [])
-
-  useEffect(() => {
-    dispatch(setAllNews(news));
-  }, [news])
 
   useEffect(() => {
     const params = {
@@ -36,12 +28,16 @@ function Home() {
     dispatch(searchNews(params));
   }, [sortValue])
 
-  const loadMore = (nextPage) => {
+  const loadPage = (nextPage, initState) => {
     const params = {
       pageSize: pageSize,
       page: nextPage
     }
-    dispatch(loadNews(params));
+    dispatch(loadNews(params))
+      .then(response => {
+        const all_news = [...initState, ...response.news]
+        dispatch(setAllNews(all_news))
+      })
     setCurrentPage(nextPage);
   }
 
@@ -90,13 +86,13 @@ function Home() {
         <div className="col-12">
           <h1>Top Headlines</h1>
         </div>
-        {allNews && allNews.map((article, index) => (
+        {allNews.map((article, index) => (
           <div key={index} className="col-12 col-md-6 col-lg-4">
             <Card article={article} />
           </div>
         ))}
         {showLoadMore(page) && <div className="col-12">
-          <button onClick={() => loadMore(page + 1)} className="btn btn-primary">Load more</button>
+          <button onClick={() => loadPage(page + 1, allNews)} className="btn btn-primary">Load more</button>
         </div>}
       </div>
     </div>
