@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { humanizeDate } from '../helpers';
 
 import defaultImage from '../assets/images/news-default.jpeg';
+import Header from '../components/Header';
 
 function Article() {
   const [article, setArticle] = useState({});
@@ -12,26 +13,40 @@ function Article() {
   }, [])
 
   return (
-    <div className="container article my-5">
-      <div className="row">
+    <div className="container article my-5 text-white">
+      <section className="row header-section">
+        <Header />
+      </section>
+      <section className="row title">
         <div className="col-12">
           <h1>{article.title}</h1>
-          <span className="text-muted d-block">Author: {article.author}</span>
+          <div className="d-flex align-items-center justify-content-between mt-3">
+            <span className="text-muted">Source: {article?.source?.name ?? ''}</span>
+            <span className="text-muted">Author: {article.author}</span>
+          </div>
           <span className="text-muted d-block">Published: {humanizeDate(article.publishedAt)}</span>
         </div>
+      </section>
+      <section className="row description">
         <div className="col-12">
-          <p className="text-muted">{article.description}</p>
+          <p className="text-white h4">{article.description}</p>
         </div>
+      </section>
+      <section className="row image">
         <div className="col-12">
-          <img className="w-100" src={article.urlToImage || defaultImage} alt="cover"/>
+          <img className="w-100" src={article.urlToImage || defaultImage} alt="cover" />
         </div>
+      </section>
+      <section className="row content">
         <div className="col-12">
           <p className="h4">{article.content}</p>
         </div>
+      </section>
+      <section className="row read-more">
         <div className="col-12">
           <a className="link h4" rel="noreferrer" href={article.url} target="_blank">Click here to read more.</a>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

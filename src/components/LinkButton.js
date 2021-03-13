@@ -6,7 +6,7 @@ function LinkButton({ onClick, to, text }) {
     <Link
       onClick={onClick}
       to={to}
-      className="btn btn-primary card-link">{text}
+      className="btn btn-link card-link">{text}
     </Link>
   )
 }

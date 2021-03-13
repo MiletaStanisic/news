@@ -1,7 +1,7 @@
 import { ApiHelper } from "./helper";
 
 const endpoint = 'https://newsapi.org/v2/';
-const api_key = '34f0df394b224a419797588079e6e8ef';
+const api_key = 'b43897046c7848e89621fe74c807854d';
 
 class Api {
   static get = (url, params) => {

@@ -8,6 +8,8 @@ import PageNotFound from './pages/404page';
 
 import './App.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import 'font-awesome/css/font-awesome.min.css';
+import SearchNews from './pages/search';
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/search" component={SearchNews} />
         <Route exact path="/article/:id" component={Article} />
         <Route component={PageNotFound}/>
       </Switch>

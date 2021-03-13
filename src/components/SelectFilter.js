@@ -2,7 +2,7 @@ import React from 'react'
 
 function SelectFilter({ onChange, value }) {
   return (
-    <select FilterclassName="form-control" value={value} onChange={onChange}>
+    <select className="form-control" value={value} onChange={onChange}>
       <option value="">Select filter</option>
       <option value="popularity">Popularity</option>
       <option value="relevancy">Relevance</option>

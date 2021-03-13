@@ -1,0 +1,14 @@
+.search-page {
+  > section {
+    margin-bottom: $section-gap;
+  }
+
+  > .search-input {
+    input, select {
+      font-size: 24px;
+    }
+  }
+  .underline {
+    text-decoration: underline;
+  }
+}

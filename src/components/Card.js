@@ -26,7 +26,7 @@ function Card({ article }) {
               <LinkButton
                 onClick={() => dispatch(loadArticle(article))}
                 to={`article/${encodeURIComponent(article.title)}`}
-                text="Read more" />
+                text="Read full article" />
             </div>
           </div>
         </div>

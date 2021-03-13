@@ -58,7 +58,7 @@ export const loadNewsSuccess = response => {
 export const searchNews = params => (dispatch, getState) => {
   dispatch(searchNewsStart())
   API.get('top-headlines?country=us', params)
-    .then(response => dispatch(searchNewsSuccess(response)))
+    .then(response => dispatch(searchNewsSuccess(response, params.q)))
     .catch(error => dispatch(searchNewsFailed(error)))
 }
 
@@ -77,10 +77,10 @@ export const searchNewsFailed = (error) => {
   }
 }
 
-export const searchNewsSuccess = response => {
+export const searchNewsSuccess = (response, query) => {
   return {
     type: AT.SEARCH_NEWS_SUCCESS,
-    filteredNews: response?.data?.articles ?? [],
+    filteredNews: query ? response.data.articles : [],
     loading: false
   }
 }

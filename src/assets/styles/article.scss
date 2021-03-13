@@ -1,3 +1,5 @@
 .article {
-  
+  > section {
+    margin-bottom: $section-gap;
+  }
 }

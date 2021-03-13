@@ -1,19 +1,11 @@
 .home {
-  > .search-input {
-    margin-top: $section-space;
-    margin-bottom: $section-space;
-  }
-
-  > .search-results {
-    // margin-bottom: $section-space;
-  }
-
   > .top-headlines {
-    margin-bottom: $section-space;
+    margin-top: $section-gap;
+    margin-bottom: $section-gap;
   }
 
   > .load-more {
-    margin-bottom: $section-space;
+    margin-bottom: $section-gap;
   }
 
   .line-clamp {
