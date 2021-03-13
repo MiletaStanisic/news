@@ -53,6 +53,36 @@ export const loadNewsSuccess = response => {
   }
 }
 
+export const searchNews = params => async (dispatch, getState) => {
+  dispatch(searchNewsStart())
+  API.get('top-headlines?country=us', params)
+    .then(response => dispatch(searchNewsSuccess(response)))
+    .catch(error => dispatch(searchNewsFailed(error)))
+}
+
+export const searchNewsStart = () => {
+  return {
+    type: AT.SEARCH_NEWS_START,
+    loading: true
+  }
+}
+
+export const searchNewsFailed = (error) => {
+  return {
+    type: AT.SEARCH_NEWS_FAILED,
+    error: error,
+    loading: false,
+  }
+}
+
+export const searchNewsSuccess = response => {
+  return {
+    type: AT.SEARCH_NEWS_SUCCESS,
+    filteredNews: response?.data?.articles ?? [],
+    loading: false
+  }
+}
+
 export const loadArticle = payload => async (dispatch, getState) => {
   dispatch(loadArticleStart())
   dispatch(loadArticleSuccess(payload))

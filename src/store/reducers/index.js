@@ -4,6 +4,7 @@ import { updateObject } from '../utils';
 const initialState = {
   allNews: [],
   news: [],
+  filteredNews: [],
   article: {},
   totalResults: 0,
   error: null,
@@ -44,6 +45,26 @@ const loadNewsFailed = (state, action) => {
   })
 }
 
+const searchNewsStart = (state, action) => {
+  return updateObject(state, {
+    loading: action.loading
+  })
+}
+
+const searchNewsSuccess = (state, action) => {
+  return updateObject(state, {
+    filteredNews: action.filteredNews,
+    loading: action.loading
+  })
+}
+
+const searchNewsFailed = (state, action) => {
+  return updateObject(state, {
+    error: action.error,
+    loading: action.loading
+  })
+}
+
 const loadArticleStart = (state, action) => {
   return updateObject(state, {
     loading: action.loading
@@ -67,6 +88,10 @@ const reducer = (state = initialState, action) => {
     case AT.LOAD_NEWS_START: return loadNewsStart(state, action)
     case AT.LOAD_NEWS_SUCCESS: return loadNewsSuccess(state, action)
     case AT.LOAD_NEWS_FAILED: return loadNewsFailed(state, action)
+
+    case AT.SEARCH_NEWS_START: return searchNewsStart(state, action)
+    case AT.SEARCH_NEWS_SUCCESS: return searchNewsSuccess(state, action)
+    case AT.SEARCH_NEWS_FAILED: return searchNewsFailed(state, action)
 
     case AT.LOAD_ARTICLE_START: return loadArticleStart(state, action)
     case AT.LOAD_ARTICLE_SUCCESS: return loadArticleSuccess(state, action)

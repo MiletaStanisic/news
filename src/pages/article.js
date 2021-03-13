@@ -9,7 +9,6 @@ function Article() {
   useEffect(() => {
     const article = localStorage.getItem('article');
     setArticle(JSON.parse(article));
-    
   }, [])
 
   return (
@@ -30,7 +29,7 @@ function Article() {
           <p className="h4">{article.content}</p>
         </div>
         <div className="col-12">
-          <a className="link h4" href={article.url} target="_blank">Click here to read more.</a>
+          <a className="link h4" rel="noreferrer" href={article.url} target="_blank">Click here to read more.</a>
         </div>
       </div>
     </div>

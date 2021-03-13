@@ -1,15 +1,18 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
+import { ToastContainer } from 'react-toastify';
 
 import Home from './pages/home';
 import Article from './pages/article';
 import PageNotFound from './pages/404page';
 
 import './App.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/article/:id" component={Article} />
