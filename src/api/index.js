@@ -1,8 +1,7 @@
 import { ApiHelper } from "./helper";
 
-const endpoint = 'https://newsapi.org/v2/';
-const api_key = 'b43897046c7848e89621fe74c807854d';
-
+const endpoint = process.env.REACT_APP_ENDPOINT;
+const api_key = process.env.REACT_APP_API_KEY;
 class Api {
   static get = (url, params) => {
     return ApiHelper(`${endpoint}${url}&apiKey=${api_key}`, 'GET', params);

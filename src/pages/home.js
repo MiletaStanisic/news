@@ -50,11 +50,11 @@ function Home() {
         <div className="col-12 title text-white mb-3 text-center">
           <h1>Top Headlines</h1>
         </div>
-        {allNews && allNews.map((article, index) => (
+        {allNews && allNews.length > 0 ? allNews.map((article, index) => (
           <div key={index} className="col-12">
             <Card article={article} />
           </div>
-        ))}
+        )) : <div className="mt-5 mx-auto text-muted h3">No news for displaying :(</div>}
       </section>}
       <section className="row load-more">
         {showLoadMore(page) && <div className="col-12 text-center">
