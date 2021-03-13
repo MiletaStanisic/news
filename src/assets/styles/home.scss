@@ -1,3 +1,13 @@
 .home {
-  
+  .line-clamp {
+    --max-lines: 3;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--max-lines);
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+  .cover {
+    object-fit: cover;
+    height: 200px;
+  }
 }
