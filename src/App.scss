@@ -1,4 +1,13 @@
 @import '~bootstrap/scss/bootstrap.scss';
+@import 'assets/styles/variables.scss';
 @import 'assets/styles/home.scss';
 @import 'assets/styles/article.scss';
 @import 'assets/styles/page-loading.scss';
+@import 'assets/styles/card.scss';
+@import 'assets/styles/header.scss';
+
+html {
+  body {
+    background-color: $body-bg;
+  }
+}

@@ -1,0 +1,14 @@
+.card {
+  -webkit-box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.54); 
+  box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.54);
+  transition: transform .1s;
+
+  .card-image {
+    height: 100%;
+    width: 350px;
+    object-fit: cover;
+  }
+}
+.card:hover {
+  transform: scale(1.05);
+}
