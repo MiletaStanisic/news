@@ -8,4 +8,4 @@ export const ApiHelper = (url, method, params) => axiosInstance({
   method,
   params
 })
-.catch(err => showFlash('error', err.response.data.message || 'Failed to fetch from API.'))
+.catch(err => showFlash('error', err?.response?.data?.message ?? 'Failed to fetch from API.'))
