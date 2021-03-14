@@ -27,10 +27,12 @@ function Home() {
     }
     dispatch(loadNews(params))
       .then(response => {
-        const all_news = [...initState, ...response.news]
-        dispatch(setAllNews(all_news))
+        if(response && response.news) {
+          const all_news = [...initState, ...response.news]
+          dispatch(setAllNews(all_news));
+          setCurrentPage(nextPage);
+        }
       })
-    setCurrentPage(nextPage);
   }
 
   const showLoadMore = (currentPage) => {
